@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExamPro — Online Examination System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <!-- AUTH -->
+  <section id="auth-screen" class="auth-screen">
+    <div class="auth-brand">
+      <div class="brand-mark">E</div>
+      <div>
+        <strong>ExamPro</strong>
+        <span>Online Examination System</span>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-hero">
+        <span class="eyebrow">SMART • SIMPLE • SECURE</span>
+        <h1 id="auth-title">Welcome back</h1>
+        <p id="auth-subtitle">Sign in to continue your examination journey.</p>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <label>Email
+          <input id="login-email" type="email" placeholder="you@example.com" required>
+        </label>
+        <label>Password
+          <div class="password-wrap">
+            <input id="login-password" type="password" placeholder="Enter password" required>
+            <button type="button" class="icon-btn toggle-password" data-target="login-password">◉</button>
+          </div>
+        </label>
+        <div class="form-row">
+          <label class="check"><input id="remember-me" type="checkbox"> Remember me</label>
+          <button type="button" id="forgot-btn" class="link-btn">Forgot password?</button>
+        </div>
+        <button class="primary-btn full" type="submit">Sign In</button>
+        <p class="switch-text">Don't have an account? <button type="button" class="link-btn" id="show-signup">Create account</button></p>
+      </form>
+
+      <form id="signup-form" class="auth-form hidden">
+        <div class="two-col">
+          <label>Full name
+            <input id="signup-name" type="text" placeholder="Your name" required>
+          </label>
+          <label>Username
+            <input id="signup-username" type="text" placeholder="username" required>
+          </label>
+        </div>
+        <label>Email
+          <input id="signup-email" type="email" placeholder="you@example.com" required>
+        </label>
+        <label>Password
+          <div class="password-wrap">
+            <input id="signup-password" type="password" placeholder="At least 6 characters" minlength="6" required>
+            <button type="button" class="icon-btn toggle-password" data-target="signup-password">◉</button>
+          </div>
+        </label>
+        <label>Confirm password
+          <input id="signup-confirm" type="password" placeholder="Repeat password" minlength="6" required>
+        </label>
+        <label class="check"><input id="terms" type="checkbox" required> I agree to the terms and conditions</label>
+        <button class="primary-btn full" type="submit">Create Account</button>
+        <p class="switch-text">Already have an account? <button type="button" class="link-btn" id="show-login">Sign in</button></p>
+      </form>
+
+      <div class="demo-note">
+        <strong>Demo access</strong>
+        <span>Email: demo@exampro.com &nbsp; Password: 123456</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="app-screen" class="app-screen hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">E</div>
+        <div><strong>ExamPro</strong><small>Examination Portal</small></div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-view="exams"><span>▣</span> Exams</button>
+        <button class="nav-item" data-view="results"><span>◒</span> Results</button>
+        <button class="nav-item" data-view="history"><span>◴</span> History</button>
+        <button class="nav-item" data-view="profile"><span>◎</span> Profile</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="support-card">
+          <span>?</span>
+          <div><strong>Need help?</strong><small>Contact support</small></div>
+        </div>
+        <button id="logout-btn" class="logout-btn">↪ <span>Logout</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button id="mobile-menu" class="icon-btn menu-btn">☰</button>
+        <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+        <div class="top-actions">
+          <button id="theme-toggle" class="round-btn" title="Toggle theme">☼</button>
+          <button id="notification-btn" class="round-btn notification">♢<i></i></button>
+          <button class="user-chip" data-view="profile">
+            <span class="avatar" id="top-avatar">D</span>
+            <span class="user-chip-text"><strong id="top-name">Student</strong><small>Candidate</small></span>
+            <span>⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <!-- DASHBOARD -->
+        <section id="view-dashboard" class="view active-view">
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow">STUDENT DASHBOARD</span>
+              <h1>Good morning, <span id="welcome-name">Student</span> 👋</h1>
+              <p>Track your exams, progress and latest results from one place.</p>
+            </div>
+            <button class="primary-btn" data-view="exams">Browse Exams →</button>
+          </div>
+
+          <div class="stat-grid">
+            <article class="stat-card"><div class="stat-icon blue">▣</div><div><span>Total Exams</span><strong id="stat-exams">0</strong><small>Available now</small></div></article>
+            <article class="stat-card"><div class="stat-icon purple">✓</div><div><span>Completed</span><strong id="stat-completed">0</strong><small>Exams submitted</small></div></article>
+            <article class="stat-card"><div class="stat-icon green">★</div><div><span>Average Score</span><strong id="stat-average">0%</strong><small>Across all attempts</small></div></article>
+            <article class="stat-card"><div class="stat-icon orange">⏱</div><div><span>Best Score</span><strong id="stat-best">0%</strong><small>Your highest result</small></div></article>
+          </div>
+
+          <div class="content-grid">
+            <div class="panel">
+              <div class="panel-head"><div><h2>Available Exams</h2><p>Choose an exam to start</p></div><button class="text-btn" data-view="exams">View all</button></div>
+              <div id="dashboard-exams" class="exam-mini-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><div><h2>Recent Results</h2><p>Your latest performance</p></div></div>
+              <div id="dashboard-results"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXAMS -->
+        <section id="view-exams" class="view">
+          <div class="section-heading">
+            <div><span class="eyebrow">EXAM LIBRARY</span><h1>Available Exams</h1><p>Search, filter and choose an examination.</p></div>
+          </div>
+          <div class="toolbar">
+            <div class="search-box">⌕<input id="exam-search" placeholder="Search exams, subjects..."></div>
+            <select id="category-filter"><option value="all">All categories</option></select>
+            <select id="difficulty-filter"><option value="all">All difficulty</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
+          </div>
+          <div id="exam-grid" class="exam-grid"></div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="view-results" class="view">
+          <div class="section-heading"><div><span class="eyebrow">PERFORMANCE</span><h1>My Results</h1><p>Review your scores and performance.</p></div></div>
+          <div class="result-summary">
+            <div class="summary-big"><span>Overall average</span><strong id="result-average">0%</strong><small>Keep practicing to improve.</small></div>
+            <div class="progress-stat"><span>Attempts</span><strong id="result-attempts">0</strong></div>
+            <div class="progress-stat"><span>Passed</span><strong id="result-passed">0</strong></div>
+            <div class="progress-stat"><span>Best score</span><strong id="result-best">0%</strong></div>
+          </div>
+          <div class="panel"><div class="panel-head"><h2>Result history</h2></div><div class="table-wrap"><table><thead><tr><th>Exam</th><th>Date</th><th>Score</th><th>Status</th><th>Action</th></tr></thead><tbody id="results-table"></tbody></table></div></div>
+        </section>
+
+        <!-- HISTORY -->
+        <section id="view-history" class="view">
+          <div class="section-heading"><div><span class="eyebrow">ACTIVITY</span><h1>Exam History</h1><p>Everything you've attempted on this account.</p></div></div>
+          <div id="history-list" class="history-list"></div>
+        </section>
+
+        <!-- PROFILE -->
+        <section id="view-profile" class="view">
+          <div class="section-heading"><div><span class="eyebrow">ACCOUNT</span><h1>My Profile</h1><p>Manage your personal information.</p></div></div>
+          <div class="profile-layout">
+            <div class="panel profile-card">
+              <div class="large-avatar" id="profile-avatar">D</div>
+              <h2 id="profile-name-card">Student</h2>
+              <p id="profile-email-card">email@example.com</p>
+              <span class="role-badge">Candidate</span>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>Personal information</h2></div>
+              <form id="profile-form" class="settings-form">
+                <label>Full name<input id="profile-name" required></label>
+                <label>Username<input id="profile-username" required></label>
+                <label>Email<input id="profile-email" type="email" required></label>
+                <label>Phone<input id="profile-phone" placeholder="+91 XXXXX XXXXX"></label>
+                <label>Bio<textarea id="profile-bio" rows="4" placeholder="Tell us a little about yourself"></textarea></label>
+                <button class="primary-btn" type="submit">Save changes</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="view-settings" class="view">
+          <div class="section-heading"><div><span class="eyebrow">PREFERENCES</span><h1>Settings</h1><p>Customize your ExamPro experience.</p></div></div>
+          <div class="panel settings-panel">
+            <div class="setting-row"><div><strong>Dark mode</strong><span>Use a darker interface for low-light environments.</span></div><label class="switch"><input id="settings-theme" type="checkbox"><span></span></label></div>
+            <div class="setting-row"><div><strong>Exam reminders</strong><span>Show reminders for exams you haven't attempted.</span></div><label class="switch"><input id="setting-reminders" type="checkbox" checked><span></span></label></div>
+            <div class="setting-row"><div><strong>Result notifications</strong><span>Notify you when an exam result is ready.</span></div><label class="switch"><input id="setting-results" type="checkbox" checked><span></span></label></div>
+            <div class="setting-row"><div><strong>Auto-save answers</strong><span>Save answers locally while you are taking an exam.</span></div><label class="switch"><input id="setting-autosave" type="checkbox" checked><span></span></label></div>
+            <div class="danger-zone"><h3>Danger zone</h3><p>Clear locally stored exam attempts and reset this demo account.</p><button id="clear-data-btn" class="danger-btn">Clear My Attempts</button></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </section>
+
+  <!-- EXAM MODAL / PLAYER -->
+  <div id="exam-modal" class="modal hidden">
+    <div class="exam-shell">
+      <header class="exam-header">
+        <div><div class="exam-header-title" id="player-title">Exam</div><small id="player-meta">10 Questions</small></div>
+        <div class="timer" id="exam-timer">30:00</div>
+        <button id="exit-exam" class="ghost-btn">Exit</button>
+      </header>
+      <div class="exam-body">
+        <div class="question-area">
+          <div class="question-top"><span id="question-count">Question 1 of 10</span><button id="mark-review" class="review-btn">☆ Mark for review</button></div>
+          <div class="question-progress"><span id="question-progress"></span></div>
+          <h2 id="question-text"></h2>
+          <div id="options" class="options"></div>
+          <div class="question-actions"><button id="prev-question" class="secondary-btn">← Previous</button><button id="next-question" class="primary-btn">Next →</button><button id="submit-exam" class="submit-btn hidden">Submit Exam</button></div>
+        </div>
+        <aside class="question-nav">
+          <h3>Question palette</h3>
+          <p>Click a number to jump to it.</p>
+          <div id="palette" class="palette"></div>
+          <div class="palette-legend"><span><i class="answered-dot"></i> Answered</span><span><i class="review-dot"></i> Review</span><span><i class="unanswered-dot"></i> Unanswered</span></div>
+          <div class="exam-rules"><strong>Before submitting</strong><ul><li>Check unanswered questions.</li><li>Review marked questions.</li><li>Once submitted, answers cannot be changed.</li></ul></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILS MODAL -->
+  <div id="details-modal" class="modal hidden">
+    <div class="dialog">
+      <button class="close-modal" data-close="details-modal">×</button>
+      <div id="details-content"></div>
+    </div>
+  </div>
+
+  <!-- RESULT MODAL -->
+  <div id="result-modal" class="modal hidden">
+    <div class="dialog result-dialog">
+      <div class="result-circle" id="result-circle">0%</div>
+      <span class="eyebrow">EXAM COMPLETED</span>
+      <h2 id="result-title">Well done!</h2>
+      <p id="result-message"></p>
+      <div class="result-detail-grid">
+        <div><span>Correct</span><strong id="final-correct">0</strong></div>
+        <div><span>Wrong</span><strong id="final-wrong">0</strong></div>
+        <div><span>Unanswered</span><strong id="final-unanswered">0</strong></div>
+        <div><span>Time used</span><strong id="final-time">0 min</strong></div>
+      </div>
+      <div class="dialog-actions"><button class="secondary-btn" id="review-result">View Results</button><button class="primary-btn" id="close-result">Back to Dashboard</button></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
